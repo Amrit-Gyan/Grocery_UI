@@ -1,0 +1,120 @@
+<template>
+<q-page class="bg-grey-3">
+  
+  <div class="row bg-teal q-px-md q-pt-lg q-py-sm text-white">
+    <div class="col-6 text-h5 text-weight-bold q-mb-md">
+      Order History
+    </div>
+    <div class="col-6 text-right">
+      <q-btn flat icon="favorite" to="/wishlist" size="md" />
+      <q-btn flat icon="shopping_cart" to="/myCart" size="md" />
+    </div>
+  </div>
+
+  <div class="q-pa-md text-h5 text-weight-regular">
+    Transactions <q-icon name="receipt_long" color="teal"/>
+  </div>
+
+  <div>
+    <q-card flat class="row q-pt-md q-pl-md q-mb-sm" v-for="cards in transactions">
+      <q-img no-spinner cover class="col-2"
+      style="border-radius:10px; height:80px; width:80px;" :src="cards.image"/>
+      <div class="col-5">
+        <p class="text-h6 text-weight-regular q-pa-sm">{{cards.name}}<br>
+          <span class="text-teal text-h6">{{cards.price}}</span>
+        </p>
+      </div>
+      <div class="col-4 text-right q-pt-lg">
+        <q-btn unelevated rounded color="teal" :label=cards.btn size="sm"/>
+      </div>
+    </q-card>
+  </div>
+
+
+
+  <q-footer>
+    <div class="row justify-between q-py-sm bg-white text-teal">
+      <q-btn icon="home" flat class="col-2" to="homeDashboard" size="lg" />
+      <q-btn icon="search" flat class="col-2" to="browse" size="lg" />
+      <q-btn icon="store" flat class="col-2" to="myStore" size="lg" />
+      <q-btn icon="history" flat class="col-2" to="orderHistory" size="lg" />
+      <q-btn icon="person" flat class="col-2" to="profile" size="lg" />
+    </div>
+  </q-footer>
+
+</q-page>
+
+</template>
+
+<script>
+import {orders} from './../model/orders.js'
+import {products} from './../model/products.js'
+
+export default{
+  name: 'orderHistory',
+  data(){
+    return{
+      orders,
+      products,
+      orderedProduct:"",
+      singleId:"",
+      multiId:"",
+    }
+  },
+
+  created(){
+    this.getOrders()
+
+  },
+
+  computed:{
+    // transactions(){
+      // let orderId = this.orders.filter(order => order.id)
+      // console.log(orderId);
+      // orderId.forEach(id => {
+      //   let ordered = this.products.filter(product => product.id == id.id)
+        
+      // });
+
+    // }
+
+  },
+
+  methods:{
+    getOrders(){
+
+    // let values = this.orders.filter(order => order.id)
+    // console.log(values);
+    this.orders.forEach(value => {
+      // console.log(value.id);
+      if(value.id.length > 2){
+        console.log(value.id+"Morer than 2 digit");
+        
+      }
+      if(value.id.length == 2){
+        console.log(value.id+"Equals to 2 digit");
+
+
+      }
+    });
+
+
+
+//       const ids = "1, 2, 3";
+
+// const idArray = ids.split(", ");
+
+// for (let i = 0; i < idArray.length; i++) {
+//   console.log(idArray[i]);
+// }
+
+
+    }
+
+
+
+  }
+}
+
+
+</script>

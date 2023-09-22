@@ -1,0 +1,73 @@
+<template>
+  <q-page class="bg-grey-3">
+
+    <div class="bg-teal text-white ">
+      <div class="row text-h6 q-py-lg">
+        <q-btn icon="arrow_back" class="col-2" flat />
+        <span class="col-8 text-center">Payment Option</span>
+      </div>
+    </div>
+
+    <div class="bg-white q-my-md q-pa-lg ">
+      
+    </div>
+
+    <div class="bg-white q-px-sm" >
+      <q-option-group
+      v-model="group"
+      :options="options"
+      color="primary"
+    />
+    </div>
+
+    <div class="">
+      <div class="row justify-between text-h7 q-pa-md q-mb-sm bg-white">
+        <div class="col-7">
+          Deliver to XYZ, 123 Lorem, ipsum.<br>Lorem, ipsum dolor.
+        </div>
+        <q-btn class="col-3 bg-teal text-white" flat rounded label="Change" />
+      </div>
+
+    </div>
+
+
+    <q-footer>
+      <div class="bg-white text-center q-py-md q-px-lg">
+        <q-btn class="bg-teal fit text-h6 text-capitalize" rounded label="Continue to Payment" />
+      </div>
+    </q-footer>
+
+  </q-page>
+</template>
+
+
+<script>
+export default {
+  name:'checkout3Payment',
+  data() {
+    return {
+      group:1,
+      options: [
+        {
+          label: 'Debit / Credit Card',
+          value: 'op1'
+        },
+        {
+          label: 'Netbanking',
+          value: 'op2'
+        },
+        {
+          label: 'Cash on Delivery',
+          value: 'op3'
+        },
+        {
+          label: 'Wallet',
+          value: 'op4'
+        },
+      ],
+    }
+
+  }
+}
+
+</script>
